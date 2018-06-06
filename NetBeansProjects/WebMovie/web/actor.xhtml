@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Actors</title>
+        <link rel="stylesheet" type="text/css" href="appearance.css"/>
+    </h:head>
+    <h:body>
+        <div align="right">
+            <h:form>
+                <h:outputLabel>User: #{user.getName()} - </h:outputLabel>
+                 <h:outputText value="#{datum.getNow()}">
+                    <f:convertDateTime dateStyle="short" timeZone="#{datum.timeZone}" locale="de"/>
+                </h:outputText>
+                <h:commandButton styleClass="sign-out" value="Sign out" action="index"/>
+            </h:form>
+    </div>
+        
+        <div class="film">
+        
+        <div class="film-block">
+        <h:form >
+            <h1>Actor</h1>
+            <h:inputText id="name" p:placeholder="Name" value="#{actor.name}" required="true" requiredMessage="Name is required"/><br/>
+            <h:inputText id="surname" p:placeholder="Surname" value="#{actor.surname}" required="true" requiredMessage="Surname is required"/><br/>
+            <h:commandButton styleClass="input-button" value="Add" action="#{actor.addActors()}">
+                <f:ajax execute="@form" render="actors-table"/>
+           </h:commandButton>
+        </h:form>
+        </div>
+        </div>
+        
+        
+        
+        <center>
+            
+            
+            <div id="tabla3">
+            <h1>#{actor.getFilmTitle()}</h1>
+        ACTORS
+        <h:dataTable id="actors-table" class="datatable-item"  value="#{actor.getActors()}" var="collection">
+    			
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                                #{collection.name}
+                        </h:column>
+                
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Surname</f:facet>
+    				<!-- row record -->
+    				#{collection.surname}
+    			</h:column>
+
+
+            </h:dataTable>
+            </div>
+        </center>
+        <h:form>
+            <h:commandButton value="Back" action="film"/>
+        </h:form>
+    </h:body>
+</html>
+

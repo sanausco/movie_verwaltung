@@ -1,0 +1,14 @@
+Mitglieder
+==========
+
+Marius Darie
+Sebei Fares
+Vallery Vallery
+Santiago Rueda Martinez
+
+Ausführen
+=========
+
+In der Datei tabellen.sql befindet sich der Code, um die Tabellen der Datenbank und eine sequence zu erzeugen.
+
+In der Klasse WebConnection des Packages DBconnection können Sie für die Verbindung die URL ihrer eigenen Datenbank mit entsprechenden benutzer und passwort eingeben.

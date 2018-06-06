@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Film</title>
+        <link rel="stylesheet" type="text/css" href="appearance.css"/>
+    </h:head>
+    
+    <h:body>
+        
+        <div align="right">
+            <h:form>
+                <h:outputLabel>User: #{user.getName()} - </h:outputLabel>
+                 <h:outputText value="#{datum.getNow()}">
+                    <f:convertDateTime dateStyle="short"  timeZone="#{datum.timeZone}" locale="de"/>
+                </h:outputText>
+                <h:commandButton styleClass="sign-out" value="Sign out" action="index"/>
+            </h:form>
+    </div>
+       <div class="film">
+        
+        <div class="film-block">
+            <h1>Movie</h1>
+        <h:form  id="form-movie">
+            
+            <h:inputText id="title" p:placeholder="Title" value="#{film.title}" required="true" requiredMessage="Title is required"/><br/>
+            
+            <h:inputText id="jahr" p:placeholder="Year" value="#{film.year}" required="true" requiredMessage="Year is required"/><br/>
+            
+            <h:inputText id="regisseur" p:placeholder="Director name" value="#{film.director}" required="true" requiredMessage="Director is required"/><br/>
+            
+            <h:selectOneMenu styleClass="add-genre" value="#{film.genre}">
+                <f:selectItem itemLabel="Genre" itemDisabled="true" />
+                <f:selectItem itemLabel="Action" itemValue="Action"/>
+                <f:selectItem itemLabel="Adventure" itemValue="Adventure"/>
+                <f:selectItem itemLabel="Animation" itemValue="Animation"/>
+                <f:selectItem itemLabel="Biography" itemValue="Biography"/>
+                <f:selectItem itemLabel="Comedy" itemValue="Comedy"/>
+                <f:selectItem itemLabel="Crime" itemValue="Crime"/>
+                <f:selectItem itemLabel="Drama" itemValue="Drama"/>
+                <f:selectItem itemLabel="Fantasy" itemValue="Fantasy"/>
+                <f:selectItem itemLabel="Horror" itemValue="Horror"/>
+                <f:selectItem itemLabel="Musical" itemValue="Musical"/>
+                <f:selectItem itemLabel="Sci-Fi" itemValue="Sci-fi"/>
+                <f:selectItem itemLabel="Sport" itemValue="Sport"/>
+                <f:selectItem itemLabel="Thriller" itemValue="Thriller"/>
+                <f:selectItem itemLabel="War" itemValue="War"/>
+            </h:selectOneMenu><br/>
+            <h:commandButton styleClass="input-button" value="Add" action="#{film.addFilm()}">
+                <f:ajax execute="@form" render="result-panel form-movie"/>
+            </h:commandButton>
+            <c:if test ="#{film.getInCollection()=='true'}">
+                <script id="meldung">alert("The film is already in your collection!");</script>
+                <!--<h:outputLabel id="outtxt" value="Wrong password!"/>-->
+            </c:if>
+        </h:form> 
+        </div>
+        </div>
+        
+        
+        
+        <div id="contenedor">
+            <center>
+            <div id="tabla1" >
+        <h1>My Collection</h1>
+        
+            <h:dataTable class="datatable-item" id="collection-panel"  value="#{user.collectionList()}" var="collection" binding="#{indexBean.datatableCollection}">
+    			
+                        <h:column>
+                                <f:facet name="header">Select</f:facet>
+                                <h:form>
+                                    <h:commandButton value="Delete" action="#{indexBean.deleteFilmCollection}"/>                                       
+                                </h:form>
+                        </h:column>
+                
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Title</f:facet>
+    				<!-- row record -->
+    				#{collection.title}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Year</f:facet>
+    				#{collection.year}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Director</f:facet>
+    				#{collection.director}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Genre</f:facet>
+    				#{collection.genre}
+    			</h:column>
+
+            </h:dataTable>
+        
+            </div>
+            </center>
+                            <center>
+
+            <div id="tabla2">
+                
+              
+            <h1>Movies</h1>
+            
+            <h:form>
+                        <div id="search-panel">
+                            <h:inputText autocomplete="off" value="#{film.search }">
+                                <f:passThroughAttribute name="placeHolder" value="Search ..."/>
+                                <f:ajax event="keyup" listener="#{film.filmeList()}" render="result-panel"/>
+                            </h:inputText> 
+                        </div> 
+            </h:form>
+            
+                <h:dataTable id="result-panel" class="datatable-item" value="#{film.filmeList()}" var="movie" binding="#{indexBean.datatableFilm}">
+    			
+                        <h:column>
+                                <f:facet name="header">Select</f:facet>
+                                <h:form>
+                                    <h:commandButton value="Add" actionListener="#{indexBean.addFilmCollection}"/>                                     
+                                </h:form>
+                        </h:column>
+                            
+                        
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Title</f:facet>
+    				<!-- row record -->
+    				#{movie.title}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Year</f:facet>
+    				#{movie.year}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Director</f:facet>
+    				#{movie.director}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Genre</f:facet>
+    				#{movie.genre}
+    			</h:column>
+                        
+                <h:column>
+                    <f:facet name="header">Actors</f:facet>
+                                <h:form>
+                        
+                                    <h:commandButton value="Show" actionListener="#{indexBean.setID}"
+                                                     action="actor" />
+                                </h:form>
+                </h:column>
+
+    		</h:dataTable>            
+                
+            </div>
+             </center>
+        </div>
+
+    </h:body>
+</html>
+

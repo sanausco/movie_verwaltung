@@ -1,0 +1,170 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02.06.2017, 14:44:23
+    Author     : rueda-ma
+*/
+
+.sign-out {
+    margin-left: 4px ;
+    margin-bottom: 4px;
+}
+
+.film-block {
+    width: 320px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    
+}
+
+.film {
+    border-top: 5px solid #ff656c;
+    border-bottom: 5px solid #ff656c;
+}
+
+.film-block input, .add-genre {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 1px 20px 0 50px;
+    outline: none;
+}
+
+
+.input-film-actor {
+    width: 40px;
+    background-color: #ff656c;
+}
+
+.film-block h1 {
+    color: #000;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Login */
+
+.login-block {
+    width: 320px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #ff656c;
+    margin: 0 auto;
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.input-name {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#username:focus {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.input-password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.input-button {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+.input-button:hover {
+    background: #ff7b81;
+}
+
+
+
+
+/* My collection and Movies */
+
+.datatable-item {
+    margin: auto;
+}
+
+#contenedor{
+    float: left;
+    width: 100%;
+    min-width: 1000px;
+}
+
+#table1 {
+    float: left;
+    width: 49%;
+}
+
+#table2 {
+    float: right;
+    width: 49%;
+}
+
+#tabla1 table, #tabla2 table,#tabla3 table {
+    text-align: center;
+}
+
+#tabla1 table tr td, #tabla2 table tr td, #tabla3 table tr td {
+    width: 100px
+}
+
+
+
+.datatable-item tr:nth-child(2n){
+    background: #FAEBD7
+
+}
